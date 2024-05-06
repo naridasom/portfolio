@@ -1,0 +1,28 @@
+﻿@charset "UTF-8";
+
+body{/*padding-top:150px;*/}
+#wrap{}
+.container{width:1280px; max-width:100%; margin:0 auto;}
+
+#header{/*position:fixed; left:0; top:0; */width:100%; padding:30px; -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); overflow:hidden; background-color:#fafafa; border-bottom:1px solid #ddd; z-index:9;}
+.logo{float:left; width:56px; height:80px; text-indent:-9999px; background-image:url(../images/n_logo.png); background-repeat:no-repeat; background-position:0 0; background-size:contain;}
+.gnb{float:right; }
+.gnbMenu{font-size:0;}
+.gnbMenu li{display:inline-block; margin-left:20px;}
+.gnbMenu li a{font-family:'Roboto'; font-size:18px; vertical-align:middle; letter-spacing:0.2em; padding:0 0 0 1px;}
+.gnbMenu li.active a{color:#58c1de; border-bottom:2px solid #58c1de; padding-bottom:2px;}
+#header.shrink{position:fixed; left:0; top:0; padding:20px;}
+#header.shrink .logo{float:left; width:60px; height:42px; background-image:url(../images/n_logo1.png); }
+#header.shrink .gnbMenu li{line-height:40px;}
+
+#container{}
+footer{text-align:center; padding:30px;}
+.ft_info{text-align:left; padding:0 30px;}
+.ft_info li{display:inline-block; vertical-align:top; padding-right:50px;}
+.ft_info li strong{display:block; font-size:18px; font-weight:500; margin-bottom:10px;}
+.ft_info li p{font-size:14px; font-weight:300; color:#999;}
+.ft_info li p span{}
+.ft_info li p a{color:#999;}
+footer .info{text-align:right; font-size:12px; font-weight:300; line-height:30px; letter-spacing:0.2em; color:#999; opacity:0.5;}
+/*.copy{font-size:18px; font-weight:300; letter-spacing:0.2em; }
+.ft_info{font-size:12px; font-weight:300; line-height:30px; letter-spacing:0.2em; color:#999;}*/
