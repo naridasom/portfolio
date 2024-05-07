@@ -76,58 +76,58 @@ $(function () {
 //   });
 // });
 
-gsap.registerPlugin(Flip);
+// gsap.registerPlugin(Flip);
 
-// Variables
-const activeClass = "is-active";
-const cards = document.querySelectorAll("[data-card]");
+// // Variables
+// const activeClass = "is-active";
+// const cards = document.querySelectorAll("[data-card]");
 
-const updateCard = (card, idx, active) => {
-  const cardInner = card.querySelector(".card-inner");
-  const image = card.querySelector(".card-icon");
+// const updateCard = (card, idx, active) => {
+//   const cardInner = card.querySelector(".card-inner");
+//   const image = card.querySelector(".card-icon");
 
-  // Bail out if we're in the middle of a flip
-  if (Flip.isFlipping(cardInner)) return;
+//   // Bail out if we're in the middle of a flip
+//   if (Flip.isFlipping(cardInner)) return;
 
-  const cardState = Flip.getState(cardInner, {
-    props: "box-shadow, border-radius"
-  });
-  const imageState = Flip.getState(image);
-  card.classList.toggle(activeClass, active);
+//   const cardState = Flip.getState(cardInner, {
+//     props: "box-shadow, border-radius"
+//   });
+//   const imageState = Flip.getState(image);
+//   card.classList.toggle(activeClass, active);
 
-  const duration = active ? 0.7 : 0.5;
-  const ease = "quint.out";
+//   const duration = active ? 0.7 : 0.5;
+//   const ease = "quint.out";
 
-  const cardContent = document.querySelectorAll(".port-cont")[idx];
-  gsap.killTweensOf(cardContent);
-  gsap.to(cardContent, {
-    duration: active ? 1 : 0.2,
-    ease: "expo.out",
-    stagger: 0.1,
-    alpha: active ? 1 : 0,
-    y: active ? 0 : 20,
-    delay: active ? 0.4 : 0
-  });
+//   const cardContent = document.querySelectorAll(".port-cont")[idx];
+//   gsap.killTweensOf(cardContent);
+//   gsap.to(cardContent, {
+//     duration: active ? 1 : 0.2,
+//     ease: "expo.out",
+//     stagger: 0.1,
+//     alpha: active ? 1 : 0,
+//     y: active ? 0 : 20,
+//     delay: active ? 0.4 : 0
+//   });
 
-  Flip.from(cardState, {
-    duration: duration,
-    ease: ease,
-    absolute: true,
-    zIndex: 1
-  });
+//   Flip.from(cardState, {
+//     duration: duration,
+//     ease: ease,
+//     absolute: true,
+//     zIndex: 1
+//   });
 
-  Flip.from(imageState, {
-    duration: duration,
-    absolute: true,
-    ease: ease,
-    simple: true
-  });
-};
+//   Flip.from(imageState, {
+//     duration: duration,
+//     absolute: true,
+//     ease: ease,
+//     simple: true
+//   });
+// };
 
-// Init
-cards.forEach((card, idx) => {
-  updateCard(card, idx, false);
-  card.addEventListener("click", (evt) => {
-    updateCard(card, idx, !card.classList.contains(activeClass));
-  });
-});
+// // Init
+// cards.forEach((card, idx) => {
+//   updateCard(card, idx, false);
+//   card.addEventListener("click", (evt) => {
+//     updateCard(card, idx, !card.classList.contains(activeClass));
+//   });
+// });
