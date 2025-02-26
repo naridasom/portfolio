@@ -47,29 +47,43 @@ html {font-size: 62.5%;}
         &.main{
             height: calc(100vh - 62px); min-height: 600px; 
             background-color: #eaeef6; position: relative;
+            // background: linear-gradient(180deg, #FFE6E9 0%, #FFF0FE 100%);
+            // background:radial-gradient(ellipse at center, #FFE6E9  20%, #E5CFFF 50%, #FFF0FE 80%);
+    //         background: linear-gradient(135deg, #FFE6EE 20%, #F3C6FF 50%, #D3A3FF 80%),
+    //             linear-gradient(-45deg, transparent 30%, #B597F5 70%);
+    // background-blend-mode: overlay;
+//             background: radial-gradient(circle at 20% 30%, #FF9ED3, transparent 50%),
+//             radial-gradient(circle at 80% 30%, #A3D8FF, transparent 50%),
+//             radial-gradient(circle at 30% 80%, #B597F5, transparent 50%),
+//             radial-gradient(circle at 70% 80%, #7E57C2, transparent 50%);
+// background-color: #7E57C2; /* 기본 배경색 */
             // background-image: icon(scroll); background-repeat: no-repeat; background-position: center bottom 25px;
             &:after{content:""; width:1px; height:150px; background-color: rgba(51,51,51,.8); position: absolute; left: 50%; bottom: 0;}
             .container{width: 100%; height: 100%; @include flex_center();}
             .main-txt{
-                font-size: 6rem; font-weight: 800; line-height: 150%; color:$text_333; text-align: center;
+                font-size: 5rem; font-weight: 600; line-height: 150%; color:#2A2438; text-align: center;
                 strong{
-                    font-weight: 900; color: $color_primary; position: relative;
-                    &:before {
-                        content: '';
-                        height: 2px;
-                        position: absolute;
-                        bottom: 2px;
-                        background: $color_primary;
-                        width: 0%;
-                        animation: 
-                            voila 2s forwards linear;
-                            //underline-gradient 6s linear infinite;
-                        background-image: linear-gradient(
-                            90deg, 
-                            rgba( map_get($colors, 'tertiary'), 0.8) 15%,
-                            rgba( map_get($colors, 'purple'), 0.8) 35%, 
-                            rgba( map_get($colors, 'green'), 0.6) 85%,  
-                        );
+                    font-weight: 900; color: #9A7FE8; position: relative;
+                    &.me{
+                        
+                        &:before {
+                            content: '';
+                            height: 2px;
+                            position: absolute;
+                            bottom: 2px;
+                            background: $color_primary;
+                            width: 0%;
+                            animation: 
+                                voila 1.5s forwards linear;
+                                //underline-gradient 6s linear infinite;
+                            background-image: linear-gradient(
+                                90deg, 
+                                rgba( map_get($colors, 'tertiary'), 0.8) 15%,
+                                rgba( map_get($colors, 'purple'), 0.8) 30%, 
+                                rgba( map_get($colors, 'purple1'), 0.8) 65%, 
+                                rgba( map_get($colors, 'green'), 0.6) 85%,  
+                            );
+                        }
                     }
                     @keyframes voila {
                         to{width: 100%;}
@@ -104,11 +118,15 @@ html {font-size: 62.5%;}
                 span{border-bottom: 2px solid $text_333;}
             }
             .skill-area{
-                h4{@include T_20_M(); margin-bottom: 3rem;}
+                h4{@include T_20_B(); font-weight: 800; margin-bottom: 3rem;}
             }
             .skill-list{
                 @include flex(); flex-wrap: wrap; align-items: center;
-                li{@include T_20_M(); margin-right: 4rem;}
+                li{
+                    @include flex(); flex-direction: column; align-items: center; padding-right: 3rem;
+                    .skill-img{height:6rem; margin-bottom: 1rem;}
+                    .skill-txt{@include T_16_B(); white-space: nowrap;}
+                }
             }
         }
         &.portfolio{
@@ -129,8 +147,10 @@ html {font-size: 62.5%;}
                 //@include flex(); flex-wrap: wrap;
                 .card {
                     // height:300px;
-                    @include flex_column(); align-items:flex-start; justify-content: space-between; border-radius: 15px; background-color: white; grid-column: span 3; padding: 30px;  position: relative; cursor: pointer;
-                    -webkit-box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25); -moz-box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25); box-shadow: 0 30px 30px -25px rgba(65, 51, 183, 0.25);
+                    @include flex_column(); align-items:flex-start; justify-content: space-between; border-radius: 15px; background-color: white; grid-column: span 3; padding: 30px;  position: relative; cursor: pointer; transition: box-shadow 0.3s ease-in-out;
+                    &:hover{
+                        -webkit-box-shadow: 0 10px 20px rgba(37, 37, 37, 0.15); -moz-box-shadow: 0 10px 20px rgba(65, 51, 183, 0.15); box-shadow: 0 10px 20px rgba(65, 51, 183, 0.15);
+                    }
                     &:after { content: ""; display: block; width: 50px; height: 50px; background-image: url("https://assets.codepen.io/66496/card-smile.svg"); background-repeat: no-repeat; background-position: center center; background-size: contain; position: absolute; top: 20px; right: 20px; transition: 0.3s; transition-property: opacity, transform; opacity: 0; transform: translateY(10px); }
                     // &.is-active {
                     //     grid-row: 1; grid-column: 1 / span 6; height: 300px; order: 0;
@@ -200,7 +220,7 @@ html {font-size: 62.5%;}
             }
             .email-btn{
                 @include flex(); align-items: center; margin-top: 1.5rem; margin-bottom: 3.5rem;
-                button{
+                button, a{
                     @include T_16_M(); color:$color_secondary; padding: 8px 12px; margin-right: 15px; border:1px solid $color_secondary; border-radius: 5px; background-color: #fff; cursor: pointer;
                     .ic{display: inline-block; vertical-align: middle; width: 16px; height: 16px; margin-right: 5px; margin-top:-3px; background-repeat: no-repeat; background-position: 0 0; background-size: contain; }
                     &.btn-copy .ic{background-image: icon(copy, 'A584DF');}
@@ -220,6 +240,30 @@ html {font-size: 62.5%;}
             }
         }
     }
+}
+
+/* modal */
+.modal {
+    display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 4rem 6rem; @include shadow; border-radius: 12px; text-align: center; z-index: 1000;
+    &.show {
+        display: block; animation: fadeIn 0.3s ease-out;
+    }
+    .close-btn {
+        position: absolute; top: 10px; right: 10px; border: none; cursor: pointer; font-size: 0; background-color:transparent; background-image: icon(close); width:24px; height:24px;
+    }
+}
+
+.overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 999;
+    &.show{
+        display: block;
+    }
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -55%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 // @keyframes backMasking {
