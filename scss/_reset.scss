@@ -1,0 +1,29 @@
+article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block;}
+audio,canvas,progress,video{display:inline-block;}
+html,body,div,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,ol,ul,li,dl,dt,dd,label,strong,span,blockquote,pre,button,fieldset,form,legend,table,caption,tbody,tfoot,thead,tr,th,td,iframe,article,aside,canvas,details,embed,figure,figcaption,header,footer,menu,nav,section,summary,audio,video,address{margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; -webkit-tap-highlight-color:transparent; font-family: $base_font; word-break:break-all; border:0;font-size:inherit; vertical-align:baseline;line-height:inherit; font-weight:normal; font-variant-numeric: tabular-nums;}
+
+html {scroll-behavior: smooth;}
+html,body{-webkit-tap-highlight-color:transparent; width:100%; height:100%;}
+body{
+    height:100%; overflow-x:hidden; overflow-y:auto; font-family: $base_font; font-size:16px; color: $text_333; 
+    //background-color: #FFF;
+} 
+::-webkit-scrollbar-thumb{background-color: #ebebeb;}
+
+
+#skip {position: relative;}
+#skip a {position: absolute; top: -200px; left: 0; border: 1px solid #fff; color: #fff; background: #333; line-height: 30px; width: 160px; text-align: center; text-decoration: none;}
+#skip a:active, #skip a:focus {top: 0;}
+
+img{max-width:100%;}
+img,fieldset{border:none; }
+b,strong{font-weight:700;}
+em,dfn,cite,address,i{font-style:normal;}
+label{cursor:pointer; margin:0; vertical-align:middle; font-weight:700;}
+a,a:link,a:hover,a:active{text-decoration:none; color:$text_333;}
+button:focus, button:active, input:focus, input:active, textarea:focus, textarea:active{outline:none !important;}
+pre{white-space: pre-line;}
+
+ol,ul,li{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+.skip, legend{width: 1px; height: 1px; font-size: 0; line-height: 0; overflow: hidden; visibility: hidden; position: absolute; left: -9999px;}
