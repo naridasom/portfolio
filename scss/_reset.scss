@@ -1,6 +1,9 @@
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block;}
 audio,canvas,progress,video{display:inline-block;}
-html,body,div,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,ol,ul,li,dl,dt,dd,label,strong,span,blockquote,pre,button,fieldset,form,legend,table,caption,tbody,tfoot,thead,tr,th,td,iframe,article,aside,canvas,details,embed,figure,figcaption,header,footer,menu,nav,section,summary,audio,video,address{margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; -webkit-tap-highlight-color:transparent; font-family: $base_font; word-break:break-all; border:0;font-size:inherit; vertical-align:baseline;line-height:inherit; font-weight:normal; font-variant-numeric: tabular-nums;}
+html,body,div,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,ol,ul,li,dl,dt,dd,label,strong,span,blockquote,pre,button,fieldset,form,legend,table,caption,tbody,tfoot,thead,tr,th,td,iframe,article,aside,canvas,details,embed,figure,figcaption,header,footer,menu,nav,section,summary,audio,video,address{
+    margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; -webkit-tap-highlight-color:transparent; font-family: $base_font; word-break:break-all; border:0;font-size:inherit; vertical-align:baseline;line-height:inherit; font-weight:normal; 
+    //font-variant-numeric: tabular-nums;
+}
 
 html {scroll-behavior: smooth;}
 html,body{-webkit-tap-highlight-color:transparent; width:100%; height:100%;}

@@ -1,7 +1,4 @@
-// JavaScript source code
-// =============================
-// 1. 스크롤 관련: 헤더 shrink + scroll-txt + email 애니메이션
-// =============================
+// 스크롤 관련: 헤더 shrink + scroll-txt + email 애니메이션
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   const letters = document.querySelectorAll('.letter');
@@ -37,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 1) scroll-txt용 IntersectionObserver
+  // scroll-txt용 IntersectionObserver
   if ('IntersectionObserver' in window && scrollContents.length) {
     const scrollObserver = new IntersectionObserver(
       (entries) => {
@@ -60,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollContents.forEach((content) => scrollObserver.observe(content));
   }
 
-  // 2) email용 IntersectionObserver (중앙 영역 감지)
+  // e-mail용 IntersectionObserver (중앙 영역 감지)
   if (emailEl && 'IntersectionObserver' in window) {
     let emailInView = false;
 
@@ -88,9 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// =============================
-// 2. Floating Contact FAB behavior
-// =============================
+// Floating Button
 (function () {
   const fab = document.getElementById('fabContact');
   if (!fab) return;
@@ -147,9 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-// =============================
-// 3. Modal & Clipboard
-// =============================
+// Modal & Clipboard
 (function () {
   const body = document.body;
 
@@ -277,44 +270,52 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textarea);
   }
 
-  // 클릭 이벤트 위임
-  document.addEventListener('click', function (e) {
-    const trigger = e.target.closest('[data-modal-target], .btn-copy');
-    const closeBtn = e.target.closest('[data-modal-close]');
-    const overlay = e.target.closest('.modal');
-    const content = e.target.closest('.modal-box');
+// 클릭 이벤트 위임
+document.addEventListener('click', function (e) {
+  // 사이트 바로가기(외부 링크) 우선 처리: 모달 오픈 막기
+  const siteLink = e.target.closest('.btn-more'); // ← 너 외부링크 버튼 클래스
+  if (siteLink) {
+    e.stopPropagation(); // li(data-modal-target) 클릭으로 버블링되는 것 차단
+    // e.preventDefault(); // 링크 이동은 해야 하니 막지 않음
+    return;              // 모달 로직 타지 않게 종료
+  }
 
-    // 1) 메일 복사 버튼
-    if (trigger && trigger.classList.contains('btn-copy')) {
-      e.preventDefault();
-      const email = trigger.getAttribute('data-email') || 'test@test.com';
-      copyToClipboard(email);
-      modal.open('#alertModal'); // 카운트다운 없이 열기만
-      return;
-    }
+  const trigger = e.target.closest('[data-modal-target], .btn-copy');
+  const closeBtn = e.target.closest('[data-modal-close]');
+  const overlay = e.target.closest('.modal');
+  const content = e.target.closest('.modal-box');
 
-    // 2) 일반 모달 열기
-    if (trigger && trigger.hasAttribute('data-modal-target')) {
-      e.preventDefault();
-      const targetSelector = trigger.getAttribute('data-modal-target');
-      modal.open(targetSelector);
-      return;
-    }
+  // 메일 복사 버튼
+  if (trigger && trigger.classList.contains('btn-copy')) {
+    e.preventDefault();
+    const email = trigger.getAttribute('data-email') || 'test@test.com';
+    copyToClipboard(email);
+    modal.open('#alertModal'); // 카운트다운 없이 열기만
+    return;
+  }
 
-    // 3) 닫기 버튼
-    if (closeBtn) {
-      const modalEl = closeBtn.closest('.modal');
-      if (modalEl) {
-        modal.close(modalEl);
-      }
-      return;
-    }
+  // 일반 모달 열기
+  if (trigger && trigger.hasAttribute('data-modal-target')) {
+    e.preventDefault();
+    const targetSelector = trigger.getAttribute('data-modal-target');
+    modal.open(targetSelector);
+    return;
+  }
 
-    // 4) 배경 클릭 시 닫기
-    if (overlay && !content) {
-      modal.close(overlay);
+  // 닫기 버튼
+  if (closeBtn) {
+    const modalEl = closeBtn.closest('.modal');
+    if (modalEl) {
+      modal.close(modalEl);
     }
-  });
+    return;
+  }
+
+  // 배경 클릭 시 닫기
+  if (overlay && !content) {
+    modal.close(overlay);
+  }
+});
 
   // ESC + 포커스 트랩
   document.addEventListener('keydown', function (e) {
